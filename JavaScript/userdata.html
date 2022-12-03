@@ -1,0 +1,557 @@
+<html>
+    <head>
+        <style>
+            body{
+            background-image:url('company1.jpg');
+            background-repeat:no-repeat;
+            background-attachment:fixed;
+            background-size:cover;
+            text-align: center;
+            padding-top:0px;
+            margin-left: auto;
+            margin-right: auto;
+            }
+
+
+            .row1{
+
+overflow:hidden;
+background:white;
+margin-top:-5px;
+height:50px
+
+}
+.row1 a{
+float:left;
+color:#B22222;
+text-align:center;
+text-decoration:none;
+padding:20px 16px;
+width:100px;
+font-size:14px;
+text-transform:uppercase;
+font-weight:bold; 
+}
+.row1 a:hover{
+background:	#00008B;
+color:white;
+}
+
+
+
+
+.row2 {
+  margin-left:400px;
+  margin-right:1000px;
+}
+  
+.column2 {
+  float: left;
+  width: 30%;
+  padding: 5px;
+}
+
+            fieldset{
+                margin-top: 40px;
+    background-color :white;
+    margin-left: 450px;
+    margin-right:500px;
+   
+}
+
+.row {
+  margin-left:600px;
+  margin-right:600px;
+}
+  
+.column {
+  float: left;
+  width: 30%;
+  padding: 5px;
+}
+
+            fieldset{
+                margin-top: 40px;
+    background-color :white;
+    margin-left: 4px;
+    margin-right:500px;
+   
+}
+table{
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right:auto;
+}
+thead{
+    background-color:navajowhite;
+    color:indigo;
+}
+tr,td{
+    color:navy;
+     text-align: center;
+}
+      </style>
+
+        <script>
+            let email1=localStorage.getItem("email");
+            let pass=localStorage.getItem("pass");
+            let index;
+            function insertData()
+            {  
+                document.getElementById("ApplicationRecord").style.visibility="hidden";
+                document.getElementById("notifications").style.visibility="hidden";
+                document.getElementById("userTable").style.visibility="visible";
+            let create=JSON.parse(localStorage.getItem("users"));
+            let text="";
+            for(let i=0;i<create.length;i++)
+            {
+              if((create[i].email==email1)&&(create[i].password==pass))
+              {
+                text +="<tr>"+ "<td>" +create[i].Name;
+                text += "<td>" +create[i].MobileNum;
+                text += "<td>" +create[i].email;
+                text += "<td>" +create[i].dob;
+                text += "<td>" +create[i].gender;
+                text += "<td>" +create[i].Degree;
+                text += "<td>" +create[i].country;
+                text += "<td>" +create[i].add;
+                text+="<td>"+
+                `<a style="color:blue" onClick="onEdit(this)">Edit</a>`+"</tr>";
+              }
+              else{
+
+              }
+            }
+            document.getElementById("userdetails").innerHTML=text;
+            }
+
+     function onDelete(td) {
+    if (confirm('Are you sure to delete this record ?')) {
+        row = td.parentElement.parentElement;
+        let n=row.rowIndex;
+        let dr=n-1;
+        
+        document.getElementById("userTable").deleteRow(row.rowIndex);
+    let users=JSON.parse(localStorage.getItem("users"));
+    for(let i=0;i<users.length;i++){
+        if(users[i].email==email1){
+             index=users.indexOf(users[i]);
+        }
+    }
+     
+     users.splice(index,1);
+    localStorage.setItem("users",JSON.stringify(users));
+    window.location.href="welcome.html";
+     
+}
+
+}
+function DeleteApplication(td){
+    let index;
+    let ApplicationRecord=JSON.parse(localStorage.getItem("ApplicationRecord"));
+    for(let i=0;i<ApplicationRecord.length;i++){
+        if(ApplicationRecord[i].email==email1){
+             index=ApplicationRecord.indexOf(users[i]);
+            
+        }
+    }
+    alert("Are you sure to withdraw Application");
+    ApplicationRecord.splice(index,1);
+    localStorage.setItem("ApplicationRecord",JSON.stringify(ApplicationRecord));
+    Applicate();
+     
+}
+
+
+function onEdit(td) {
+    document.getElementById("updateRecord").style="visible";
+    document.getElementById("fieldset").style="visible";
+    selectedRow = td.parentElement.parentElement;
+    row = td.parentElement.parentElement;
+        let n=row.rowIndex;
+        m=n-1;
+    document.getElementById("Name").value = selectedRow.cells[0].innerHTML;
+    document.getElementById("MobileNum").value = selectedRow.cells[1].innerHTML;
+    document.getElementById("email").value = selectedRow.cells[2].innerHTML;
+    document.getElementById("dob").value = selectedRow.cells[3].innerHTML;   
+    document.f1.gender.value = selectedRow.cells[4].innerHTML; 
+    let check=document.getElementsByClassName("Designation");
+    let str="";
+    for(let i=0;i<=2;i++){
+    if(check[i].checked==true){
+    str+=check[i].value+" ";
+     }
+    }
+    str=selectedRow.cells[5].innerHTML;
+   
+    
+    document.getElementById("country").value = selectedRow.cells[6].innerHTML;
+    document.getElementById("add").value = selectedRow.cells[7].innerHTML;
+}
+
+function updateRecord(){
+    document.getElementById("fieldset").style.visibility="hidden";
+    let password1;
+    let confirmPassword;
+    let users=JSON.parse(localStorage.getItem("users"));
+    for(let i=0;i<users.length;i++){
+        if(users[i].email==email1){
+           password1=users[i].password;
+             confirmPassword=users[i].confpassword;
+        }
+    }
+let Name,MobileNum,email,DOB,gender,Designation,Country,password,confpassword,add;
+Name=document.getElementById("Name").value;
+MobileNum=document.getElementById("MobileNum").value;
+email=document.getElementById("email").value;
+DOB=document.getElementById("dob").value;
+gender=document.f1.gender.value;
+let d=document.getElementsByClassName('Designation');
+let str="";
+for(let i=0;i<=2;i++)
+{
+ if(d[i].checked==true)
+ {
+  str+=d[i].value+" ";
+ }
+}
+Designation=str;
+
+Country=document.getElementById("country").value;
+password=password1;
+confpassword=confirmPassword;
+add=document.getElementById("add").value
+let userData=
+   {
+        "Name":Name,
+        "MobileNum":MobileNum,
+        "email":email,
+        "dob":DOB,
+        "gender":gender,
+        "Degree":Designation,
+        "country":Country,
+        "password":password,
+        "confpassword":confpassword,
+        "add":add
+
+    }
+    
+     users=JSON.parse(localStorage.getItem("users"));
+    console.log(m);
+
+if(document.getElementById("button").innerHTML=="Add Record")
+{
+     let regRecords=new Array();
+    regRecords=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
+     if(regRecords.some((v)=>{return v.email==email}))
+   {
+    alert("you are Already Registered");
+    window.location.href="welcome.html";
+   }
+
+   else
+   {
+     regRecords.push({
+
+        "Name":Name,
+        "MobileNum":MobileNum,
+        "email":email,
+        "dob":DOB,
+        "gender":gender,
+        "Degree":Designation,
+        "country":Country,
+        "password":password,
+        "confpassword":confpassword,
+        "add":add
+
+
+     })
+     localStorage.setItem("users",JSON.stringify(regRecords));
+    }
+   
+
+}
+    else
+
+    {
+        let users=JSON.parse(localStorage.getItem("users"));
+    for(let i=0;i<users.length;i++){
+        if(users[i].email==email1){
+            
+
+             index=users.indexOf(users[i]);
+        }
+    }
+     
+        users.splice(index,1,userData);
+        localStorage.users=JSON.stringify(users);
+        document.getElementById('updateRecord').style.visibility="hidden";
+    }
+    insertData();
+  
+}
+
+function callNotification(){
+    document.getElementById("ApplicationRecord").style.visibility="hidden";
+    document.getElementById("notifications").style.visibility="visible";
+    document.getElementById("ApplicationRecord").style.visibility="hidden";
+    document.getElementById("userTable").style.visibility="hidden";
+    let get,create,text,i;
+    get=localStorage.getItem("notifications");
+    create=JSON.parse(get);
+    text="";
+    for(i=0;i<create.length;i++){
+    text +="<tr>"+ "<td>" +create[i].title;
+    text += "<td>" +create[i].Description;
+        text+="<td>"+
+ `<a style="color:blue" onClick="apply(this)">apply</a>`+"</tr>";
+        }
+        document.getElementById("notificationsTable").innerHTML=text;
+}
+
+function apply(td){
+    row = td.parentElement.parentElement;
+        let n=row.rowIndex;
+        let dr=n-1;
+    
+        // document.getElementById("notifications").deleteRow(row.rowIndex);
+    let notifications=JSON.parse(localStorage.getItem("notifications"));
+
+
+     
+    let email1=localStorage.getItem("email");
+    let users=JSON.parse(localStorage.getItem("users"));
+    for(let i=0;i<users.length;i++){
+        if(users[i].email==email1){
+            index=users.indexOf(users[i]);
+        }
+    }
+    let Application= new Array();
+    Application=JSON.parse(localStorage.getItem("ApplicationRecord"))?JSON.parse(localStorage.getItem("ApplicationRecord")):[]
+     Application.push({
+        "Name":users[index].Name,
+        "MobileNumber":users[index].MobileNum,
+        "EmailId":users[index].email,
+        "Qualification":users[index].Degree,
+         "JobTitle":notifications[dr].title,
+         "Status":""
+     })
+     alert("Sucessfully applied");
+     localStorage.setItem("ApplicationRecord",JSON.stringify(Application));
+}
+        
+
+function Applicate(){
+    document.getElementById("notifications").style.visibility="hidden";
+    document.getElementById("ApplicationRecord").style.visibility="visible";
+    document.getElementById("userTable").style.visibility="hidden";
+    let create1=JSON.parse(localStorage.getItem("ApplicationRecord"));
+            let text="";
+            email1=localStorage.getItem("email");
+            for(let i=0;i<create1.length;i++)
+            {
+              if(create1[i].EmailId==email1)
+              {
+                text +="<tr>"+ "<td>" +create1[i].Name;
+                text += "<td>" +create1[i].MobileNumber;
+                text += "<td>" +create1[i].EmailId;
+                text += "<td>" +create1[i].Qualification;
+                text += "<td>" +create1[i].JobTitle;
+                text += "<td>" +create1[i].Status;
+                text+="<td>"+
+                
+                `<a style="color:red" onclick="DeleteApplication(this)">WithDraw Application</a>`+"</tr>";
+                }
+                else{
+                   
+                }
+            }
+            document.getElementById("Application").innerHTML=text;
+}
+        </script>
+        <body onload="event.preventDefault();">
+           
+<div class="row1">
+    <a href onclick="event.preventDefault(); Applicate();">Track My Application</a>
+    <a href onclick="event.preventDefault();  callNotification();">Notification</a>
+    <a href onclick="event.preventDefault(); insertData();">Update My Data</a>
+   
+    <a href="loginForm.html">Log Out</a>
+</div>
+<br>
+<br>
+<div class="row2">
+    <div class="column2">
+        <table id="userTable" style="text-align: center; background-color: white; visibility: hidden; ">
+            <thead style=" height:50px;" ">
+                <tr>
+                    <th>Name</th>
+                    <th>Mobile Number</th>
+                    <th>Email</th>
+                    <th>Date Of Birth</th>
+                    <th>Gender</th>
+                    <th>Qualification</th>
+                    <th>Country</th>
+                    <th>Addres</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="userdetails" style="height:50px; "></tbody>
+        </table>
+    </div>
+    <div class="column2">
+        <table Id="ApplicationRecord" style="text-align: center; background-color: white; visibility: hidden;">
+            <thead style=" height:50px;" >
+                <tr>
+                    <th>Name</th>
+                    <th>Mobile Number</th>
+                    <th>Email</th>
+                    <th>Qualification</th>
+                    <th>Job Title</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="Application"></tbody>
+        </table>
+
+    </div>
+
+</div>
+     
+
+        
+
+
+
+                <div class="row">
+                    <div class="column">
+
+                 
+                <form name="f1">
+                    <fieldset id="fieldset"  style="background-color: white; visibility: hidden; ">
+                <table id="updateRecord" class="center"  style=" background-color:white; visibility: hidden;">
+                
+                    <tr>
+                    <td>
+                    Name:
+                    </td>
+                    <td>
+                    <input type="text" placeholder="Name" Id="Name"/><label style="color:red">*</label>
+                    
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>
+                    Mobile Number:
+                    </td>
+                    <td>
+                    <input type="text"    placeholder="Mobile Number" Id="MobileNum"/><label style="color:red">*</label><br>
+                    <label Id="invalid" style="color:red;visibility:hidden">Invalid</label>  
+                    </td>
+                    </tr>
+                    
+                    <tr>
+                    <td>
+                    Email:
+                    </td>
+                    <td>
+                    <input type="text" placeholder="email" Id="email"/><br>
+                    <label Id="emailid" style="color:red;visibility:hidden">Invalid</label>
+                    </td>
+                    </tr>
+                    
+                    <tr>
+                    <td>
+                    Date of Birth:
+                    </td>
+                    <td>
+                    <input type="date" Id="dob"/>  &emsp; &nbsp;&nbsp; &emsp;<label style="color:red">*</label>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>
+                    Gender:
+                    </td>
+                    <td>
+                    <input type="radio" name="gender" Id="male" value="male"/>male
+                    <input type="radio" name="gender"  Id="female" value="female"/>female  &emsp; &nbsp; &emsp;<label style="color:red">*</label>
+                    </td>
+                    </tr>
+                    
+                    
+                    <tr>
+                    <td>
+                    Designation:
+                    <td>
+                    <input type="checkbox" class="Designation" id="frontend devloper" value="B.tech"/>B.tech
+                    <input type="checkbox" class="Designation" id="java devloper" value="BSc"/>BSc
+                    <input type="checkbox" class="Designation" id="Executive Accountant" value="MBA"/>MBA &nbsp; &emsp;<label style="color:red">*</label>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>
+                    Country:
+                    </td>
+                    <td>
+                    <select Id="country">
+                    <option value="select">select</option>
+                    <option value="India">India</option>
+                    <option value="Us">Us</option>
+                    <option value="Cannada">Cannada</option>
+                    <option value="Uk">Uk</option>
+                    <option value="Austrila">Austrila</option>
+                    <option value="Germany">Germany</option>
+                    <option value="fernch">Fernch</option>
+                    </select> &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;<label style="color:red">*</label>
+                    </td>
+                    </tr>
+                    
+                    <tr>
+                    <td>
+                    Address:</td>
+                    <td>
+                    <textarea id="add" style="height:100px" row="6" cols="30"></textarea>
+                    
+                    </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr>
+                    <td></td>
+                    <td  colspan="2" >
+                        
+                    <button  id="button" onclick="event.preventDefault(); updateRecord();" style="width:100px; height:30px; background-color:#228B22;color:white">Update</button><br><br>
+                    
+                    
+                    </td></tr>
+                    
+                </table>
+                </fieldset>
+                </form>
+          
+            </div>
+    
+            <div class="column">
+                <table Id="notifications" style="background-color:white; visibility: hidden; width:700;">
+                    <thead>
+                        <tr style="height:50px;width:70px;">
+                            <th >
+                                Job Role
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                Apply
+                            </th>
+                        </tr>
+                        <tbody id="notificationsTable" style="background-color: white; height:70px;">
+    
+                        </tbody>
+                    </thead>
+                </table>
+              </div>
+        </div>
+        </body>
+    </head>
+</html>

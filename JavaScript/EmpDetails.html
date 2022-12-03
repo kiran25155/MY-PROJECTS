@@ -1,0 +1,622 @@
+<html>
+<head>
+<style>
+body{
+background-image:url('company1.jpg');
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-size:cover;
+text-align: center;
+
+}
+.row1{
+
+overflow:hidden;
+background:white;
+margin-top:-5px;
+height:50px
+
+}
+.row1 a{
+float:left;
+color:#B22222;
+text-align:center;
+text-decoration:none;
+padding:20px 16px;
+width:100px;
+font-size:14px;
+text-transform:uppercase;
+font-weight:bold
+}
+.row1 a:hover{
+background:	#00008B;
+color:white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  margin-left:550px;
+  margin-right:810px;
+}
+  
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+.row2 {
+  margin-left:500px;
+  margin-right:600px;
+}
+  
+.column2 {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+fieldset{
+   
+    background-color:white;
+    margin-left: auto;
+    margin-right:auto;
+    border-color: #B22222;
+   
+}
+#postTable{
+    width: 500;
+    /* margin-left: -900%;
+    margin-right: 1300%; */
+}
+table{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color:white;
+    margin-bottom: 30px;
+}
+thead{
+    background-color:navajowhite;
+    color:indigo;
+}
+tr,td{
+    color:navy;
+     text-align: center;
+}
+h1{
+color:red;
+text-align:center;
+}
+
+
+</style>
+
+
+<script>
+   let m;
+//     function insertData(){
+//         let get,create,text,i;
+//     get=localStorage.getItem("users");
+//     create=JSON.parse(get);
+//     text="";
+//     for(i=0;i<create.length;i++){
+//     text +="<tr>"+ "<td>" +create[i].Name;
+//     text += "<td>" +create[i].MobileNum;
+//         text += "<td>" +create[i].email;
+//             text += "<td>" +create[i].dob;
+//                 text += "<td>" +create[i].gender;
+//                     text += "<td>" +create[i].Designation;
+//                     text += "<td>" +create[i].country;
+//                             text += "<td>" +create[i].add;
+                               
+//                                 text+="<td>"+
+//                                 `<a style="color:blue" onClick="onEdit(this)">Edit</a>
+//                        <a style="color:red" onClick="onDelete(this)">Delete</a>`+"</tr>";
+//     }
+//     document.getElementById("cool").innerHTML=text;
+// }
+
+
+
+
+// function onEdit(td) {
+//     document.getElementById("fieldset").style.visibility="visible";
+//     document.getElementById("updateRecord").style.visibility="visible";
+//     document.getElementById("button").innerHTML="Update";
+//     selectedRow = td.parentElement.parentElement;
+//     row = td.parentElement.parentElement;
+//         let n=row.rowIndex;
+//         m=n-1;
+//     document.getElementById("Name").value = selectedRow.cells[0].innerHTML;
+//     document.getElementById("MobileNum").value = selectedRow.cells[1].innerHTML;
+//     document.getElementById("email").value = selectedRow.cells[2].innerHTML;
+//     document.getElementById("dob").value = selectedRow.cells[3].innerHTML;   
+//     document.f1.gender.value = selectedRow.cells[4].innerHTML; 
+//     let check=document.getElementsByClassName("Designation");
+//     let str="";
+//     for(let i=0;i<=2;i++){
+//     if(check[i].checked==true){
+//     str+=check[i].value+" ";
+//      }
+//     }
+//     str=selectedRow.cells[5].innerHTML;
+   
+    
+//     document.getElementById("country").value = selectedRow.cells[6].innerHTML;
+//     document.getElementById("add").value = selectedRow.cells[7].innerHTML;
+// }
+
+// function updateRecord(){
+//     let password1;
+//     let confirmPassword;
+//     let users=JSON.parse(localStorage.getItem("users"));
+//     for(let i=0;i<users.length;i++){
+//         if(users[i].email==document.getElementById("email").value){
+//            password1=users[i].password;
+//              confirmPassword=users[i].confpassword;
+//         }
+//     }
+
+//     let Name,MobileNum,email,DOB,gender,Designation,Country,password,confpassword,add;
+//     Name=document.getElementById("Name").value;
+//     MobileNum=document.getElementById("MobileNum").value;
+//     email=document.getElementById("email").value;
+//     DOB=document.getElementById("dob").value;
+//     gender=document.f1.gender.value;
+//     let d=document.getElementsByClassName('Designation');
+//     let str="";
+//     for(let i=0;i<=2;i++)
+//     {
+//      if(d[i].checked==true)
+//      {
+//       str+=d[i].value+" ";
+//      }
+//     }
+//     Designation=str;
+
+//     Country=document.getElementById("country").value;
+//     password=password1;
+//     confpassword=confirmPassword;
+//     add=document.getElementById("add").value
+//     let userData=
+//        {
+//             "Name":Name,
+//             "MobileNum":MobileNum,
+//             "email":email,
+//             "dob":DOB,
+//             "gender":gender,
+//             "Designation":Designation,
+//             "country":Country,
+//             "password":password,
+//             "confpassword":confpassword,
+//             "add":add
+    
+//         }
+        
+//         users=JSON.parse(localStorage.getItem("users"));
+//         console.log(m);
+
+//     if(document.getElementById("button").innerHTML=="Add Record")
+//     {
+//          let regRecords=new Array();
+//         regRecords=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
+//          if(regRecords.some((v)=>{return v.email==email}))
+//        {
+//         alert("you are Already Registered");
+//         window.location.href="welcome.html";
+//        }
+
+//        else
+//        {
+//          regRecords.push({
+
+//             "Name":Name,
+//             "MobileNum":MobileNum,
+//             "email":email,
+//             "dob":DOB,
+//             "gender":gender,
+//             "Designation":Designation,
+//             "country":Country,
+//             "password":password,
+//             "confpassword":confpassword,
+//             "add":add
+    
+    
+//          })
+//          localStorage.setItem("users",JSON.stringify(regRecords));
+//         }
+
+
+//     }
+//         else
+//         {
+//             users.splice(m,1,userData);
+//             localStorage.users=JSON.stringify(users);
+//             document.getElementById('updateRecord').style.visibility="hidden";
+//         }
+        
+      
+// }
+
+
+// function onDelete(td) {
+//     if (confirm('Are you sure to delete this record ?')) {
+//         row = td.parentElement.parentElement;
+//         let n=row.rowIndex;
+//         let dr=n-1;
+//         console.log(m);
+//         document.getElementById("regTable").deleteRow(row.rowIndex);
+//     let users=JSON.parse(localStorage.getItem("users"));
+//      console.log(users[3]);
+//      users.splice(dr,1);
+//     localStorage.setItem("users",JSON.stringify(users));
+//      insertData();
+// }
+
+// }
+
+// function AddData(){
+//     document.getElementById("fieldset").style.visibility="visible";
+//     document.getElementById('updateRecord').style.visibility="visible";
+//     let a=document.getElementById("button").innerHTML="Add Record";
+    
+
+// }
+
+// function insert(){
+//     let valid
+//     let Name,MobileNum,email,DOB,gender,Designation,Country,password,confpassword,add;
+//     Name=document.getElementById("Name").value;
+//     MobileNum=document.getElementById("MobileNum").value;
+//     email=document.getElementById("email").value;
+//     DOB=document.getElementById("dob").value;
+//     gender=document.f1.gender.value;
+//     let d=document.getElementsByClassName('Designation');
+//     let str="";
+//     for(let i=0;i<=2;i++)
+//     {
+//     if(d[i].checked==true)
+//     {
+//      str+=d[i].value+" ";
+//     }
+//     }
+//     Designation=str;
+
+//     Country=document.getElementById("country").value;
+    
+//     add=document.getElementById("add").value
+//     let regRecords=new Array();
+//     regRecords=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
+//     if(regRecords.some((v)=>{return v.email==email})){
+//         alert("you are Already Registered");
+//         window.location.href="welcome.html";
+//     }
+//     else{
+//         regRecords.push({
+
+//             "Name":Name,
+//             "MobileNum":MobileNum,
+//             "email":email,
+//             "dob":DOB,
+//             "gender":gender,
+//             "Designation":Designation,
+//             "country":Country,
+//             "password":password,
+//             "confpassword":confpassword,
+//             "add":add
+    
+    
+//         })
+//          localStorage.setItem("users",JSON.stringify(regRecords));
+//     }
+    
+//      return valid;
+
+// }
+
+function ApplicateStatus(){
+    document.getElementById("postTable").style.visibility="hidden";
+    document.getElementById("regTable").style.visibility="visible";
+    document.getElementById("postJob").style.visibility="hidden";
+    document.getElementById("postJobs").style.visibility="hidden";
+    let create1=JSON.parse(localStorage.getItem("ApplicationRecord"));
+            let text="";
+            email1=localStorage.getItem("email");
+            for(let i=0;i<create1.length;i++)
+            {
+              
+                text +="<tr>"+ "<td>" +create1[i].Name;
+                text += "<td>" +create1[i].MobileNumber;
+                text += "<td>" +create1[i].EmailId;
+                text += "<td>" +create1[i].Qualification;
+                text += "<td>" +create1[i].JobTitle;
+                text += "<td>" +create1[i].Status;
+                text+="<td>"+
+                
+                `<a style="color:red" onclick="EditStatus(this)">Update Status</a>`+"</tr>";
+                
+                
+            }
+            document.getElementById("ApplicateData").innerHTML=text;
+}
+function EditStatus(td){
+    document.getElementById("notification").style.visibility="visible";
+    document.getElementById("update").style.visibility="visible";
+    selectedRow = td.parentElement.parentElement;
+    row = td.parentElement.parentElement;
+        let n=row.rowIndex;
+       m=n-1;
+    document.getElementById("status").value = selectedRow.cells[5].innerHTML;
+}
+function UpdateStatus(){
+    
+    let ApplicationRecord=JSON.parse(localStorage.getItem("ApplicationRecord"));
+    let Name,MobileNumber,EmailId,Qualification,JobTitle,Status;
+    Name=selectedRow.cells[0].innerHTML;
+    MobileNumber=selectedRow.cells[1].innerHTML;
+    EmailId=selectedRow.cells[2].innerHTML;
+    Qualification=selectedRow.cells[3].innerHTML;
+    JobTitle=selectedRow.cells[4].innerHTML;
+    Status=document.getElementById("status").value;
+    let Applicate={
+        "Name":Name,
+        "MobileNumber":MobileNumber,
+        "EmailId":EmailId,
+        "Qualification":Qualification,
+        "JobTitle":JobTitle,
+        "Status":Status
+
+    }
+    ApplicationRecord.splice(m,1,Applicate);
+            localStorage.ApplicationRecord=JSON.stringify(ApplicationRecord);    
+
+}
+function getpost(){
+//    document.getElementById("postTableF").style.visibility="visible";
+    document.getElementById("regTable").style.visibility="hidden";
+    document.getElementById("postTable").style.visibility="visible";
+    let create2=JSON.parse(localStorage.getItem("notifications"));
+            let text="";
+           
+            for(let i=0;i<create2.length;i++)
+            {
+              
+                text +="<tr>"+ "<td>" +create2[i].title;
+                text += "<td>" +create2[i].Description;
+                
+                text+="<td>"+
+                
+                    `<a style="color:red" onclick="deletePost(this)">delete</a>
+                <a style="color:blue" onclick="editpost(this)">Update</a>`+"</tr>";
+                
+                
+            }
+            document.getElementById("updatePost").innerHTML=text;
+}
+
+
+
+function editpost(td){
+    document.getElementById("postTitile").innerHTML="Update Post";
+    document.getElementById("post").innerHTML="update";
+    document.getElementById("postJob").style.visibility="visible";
+   document.getElementById("postJobs").style.visibility="visible";
+    selectedRow = td.parentElement.parentElement;
+    row = td.parentElement.parentElement;
+        let n=row.rowIndex;
+       m=n-1;
+       document.getElementById("title").value=selectedRow.cells[0].innerHTML;
+       document.getElementById("Description").value=selectedRow.cells[1].innerHTML;
+   
+}
+
+// function updatePost(){
+//     let notifications=JSON.parse(localStorage.getItem("notifications"));
+//     let title,Description;
+//    title=document.getElementById("title").value;
+//     Description=document.getElementById("Description").value;
+//     let notif={
+//        "title":title,
+//        "Description":Description
+
+//     }
+//     notifications.splice(m,1,notif);
+//             localStorage.notifications=JSON.stringify(notifications);    
+
+// }
+
+function deletePost(td){
+    if (confirm('Are you sure to delete this record ?')) {
+        row = td.parentElement.parentElement;
+        let n=row.rowIndex;
+        let dr=n-1;
+       
+        // document.getElementById("postJobs").deleteRow(row.rowIndex);
+    let notifications=JSON.parse(localStorage.getItem("notifications"));
+     
+    notifications.splice(dr,1);
+    localStorage.setItem("notifications",JSON.stringify(notifications));
+    
+}
+ getpost();  
+}
+
+
+function callpost(){
+    document.getElementById("postTitile").innerHTML="Create Post";
+    document.getElementById("postTable").style.visibility="hidden";
+    document.getElementById("regTable").style.visibility="hidden";
+    document.getElementById("postJobs").style.visibility="visible";
+    document.getElementById("postJob").style.visibility="visible";
+}
+ function postJobs(){
+    
+    document.getElementById("postTable").style.visibility="hidden";
+    document.getElementById("regTable").style.visibility="hidden";
+    document.getElementById("postJob").style.visibility="visible";
+    document.getElementById("postJobs").style.visibility="visible";
+    let title1=document.getElementById("title").value;
+    let Description=document.getElementById("Description").value;
+    if(document.getElementById("post").innerHTML=="Post"){
+       
+        let notification=new Array();
+    notification=JSON.parse(localStorage.getItem("notifications"))?JSON.parse(localStorage.getItem("notifications")):[]
+    if(notification.some((v)=>{return v.title==title})){
+        alert("you are already posted");
+       
+    }
+    else{
+        notification.push({
+            "title":title1,
+            "Description":Description
+        })
+        localStorage.setItem("notifications",JSON.stringify(notification));
+        alert("successfully posted");
+    }
+}
+
+    else{
+        let index;
+       
+        document.getElementById("postTitile").innerHTML="Update Post";
+        let notifications=JSON.parse(localStorage.getItem("notifications"));
+        let notif={
+       "title":title1,
+       "Description":Description
+         }
+        let s="";
+    for(let i=0;i<notifications.length;i++){
+        if(notifications[i].title==title1){
+            index=notifications.indexOf(notifications[i]);
+            notifications.splice(index,1,notif);
+            localStorage.notifications=JSON.stringify(notifications); 
+        
+            s="sucessfully Updated";    
+        }
+        else{
+            s="you can not change job Title";
+        }
+    }
+       alert(s);
+    }
+   
+ }
+    </script>
+
+</head>
+<body>
+    <div class="row1">
+        <a onclick="callpost()">Send Post</a>
+        <a onclick="ApplicateStatus()">Update Applicate Status</a>
+        <a onclick="getpost()">Update Post</a>
+    <a href="loginForm.html">Log Out</a>
+    </div>
+
+<h1 style="margin-top:100px"><marquee direction="right" behavior="scroll" scrollamount="10">Welcome</marquee></h1>
+<div class="row">
+    <div class="column">
+<table id="regTable" style="visibility: hidden;">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Mobile Number</th>
+            <th>Email</th>
+            <th>Qualification</th>
+            <th>JobTitle</th>
+            <th>Status</th>
+            <th>Update Status</th>
+            
+        </tr>
+    </thead>
+   
+    <tbody id="ApplicateData"></tbody>
+
+</table>
+    </div>
+<div class="column">
+    <fieldset id="postJob" style="visibility: hidden;">
+        <h2 id="postTitile" style="color: #00008B;">Create Job Notification</h2>
+        <form>
+<table id="postJobs" style="visibility: hidden;" >
+    <tr >
+        <td>
+            Job Title:
+        </td>
+        <td >
+            <input type="text" Id="title">
+        </td>
+    </tr>
+    <tr>
+       <td >Description:</td> 
+       <td>
+        <textarea Id="Description" style="height:100px" row="6" cols="30"></textarea>
+       </td>
+    </tr>
+    <tr>
+        <td ></td>
+        <td><button onclick="postJobs()" id="post" style="width:80px; height:40px ; background-color:#05770d;color:#fbfaf7">Post</button></td>
+    </tr>
+</table>
+</form>
+</fieldset>
+
+</div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="row2">
+<div class="column2">
+<!-- <fieldset id="postTableF" style="visibility: hidden;" > -->
+<table id="postTable" style="visibility: hidden;">
+    <thead>
+        <tr>
+          <th>Job Title</th>
+          <th>Description</th>
+          <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="updatePost"></tbody>
+    
+</table>
+<!-- </fieldset> -->
+</div>
+
+<div class="column2">
+<form Id="update" style="visibility: hidden;" >
+
+    <table Id="notification" width="10" style="visibility: hidden;" >
+        <tr>
+            <th>
+                Update Status:
+            </th>
+            <td><input type="text" Id="status"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button onclick="UpdateStatus()"  style="background-color: #05770d; height:40px; color:white; ">Update Status</button>
+            </td>
+        </tr>
+    </table>
+
+</form>
+</div>
+</body>
+</html>

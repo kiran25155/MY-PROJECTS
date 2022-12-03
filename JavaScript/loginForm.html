@@ -1,0 +1,197 @@
+<!DocType>
+<html>
+<head>
+<style>
+body{
+
+background-image:url('company1.jpg');
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-size:cover;
+padding-top:80px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  margin-left:400px;
+  margin-right:-5px;
+}
+  
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+input:focus {
+            background-color:#EBF5FB;
+        }
+
+fieldset{
+    color:darkblue;
+    text-align: center;
+    margin-top: 100px;
+    padding-left: 30px;
+background-color:ghostwhite;
+ border-color: indianred;
+width:300px;
+}
+table{
+    color:darkblue;
+}
+
+</style>
+
+<script>
+
+
+function changInpts(){
+let id=document.getElementById("empId").value;
+let reg=/^Em\d{4}$/;
+if(id==""){
+document.getElementById("empid").innerHTML="invalid";
+document.getElementById("empid").style.color="red";
+document.getElementById("empid").style.visibility="visible";
+}
+else if(reg.test(id)){
+document.getElementById("empid").innerHTML="valid";
+document.getElementById("empid").style.color="green";
+document.getElementById("empid").style.visibility="visible";
+}
+else{
+document.getElementById("empid").innerHTML="invalid";
+document.getElementById("empid").style.color="red";
+document.getElementById("empid").style.visibility="visible";
+}
+}
+
+
+
+function passInputs(){
+let pass=document.getElementById("password").value;
+let regExp=/^[A-Z](?=.*[!\@\#\$\%\^\&])(?=.*[a-z])(?=.*[0-9]).{8,}$/
+if(pass==""){
+document.getElementById("crtpass").innerHTML="Password consist should be 8 charater<br>First letter Should be Capital<br>atleast one lower case character<br>atleast one special character<br>atleast one Numeric value";
+document.getElementById("crtpass").style.color="red";
+document.getElementById("crtpass").style.visibility="visible";
+}
+else if(regExp.test(pass)){
+
+document.getElementById("crtpass").innerHTML="valid";
+document.getElementById("crtpass").style.color="green";
+document.getElementById("crtpass").style.visibility="visible";
+
+}
+else{
+console.log(pass);
+console.log(regExp.test(pass));
+document.getElementById("crtpass").innerHTML="Password consist should be 8 charater<br>First letter Should be Capital<br>atleast one lower case character<br>atleast one special character<br>atleast one Numeric value";
+document.getElementById("crtpass").style.color="red";
+document.getElementById("crtpass").style.visibility="visible";
+}
+}
+
+
+
+
+function checking(){
+
+let name=document.getElementById("empId").value;
+let pass=document.getElementById("password").value;
+
+if((name=="Em1234")&&(pass=="Kiran@1234")){
+ window.location.href="EmpDetails.html";
+ alert("Sucessfully login");
+}
+else{
+alert("you details are not matched with our record");
+}
+}
+
+
+function userData(){
+    let email1=document.getElementById("email").value;
+    let pass1=document.getElementById("pass").value;
+    let email=localStorage.setItem("email",email1);
+    let pass=localStorage.setItem("pass",pass1);
+    let users=JSON.parse(localStorage.getItem("users"));
+    let s="";
+
+    for(let i=0;i<=users.length-1;i++){
+        if(email1==users[i].email&&pass1==users[i].password){
+            s="Sucessfully Login";
+        window.location.href="userData.html";
+        break;
+
+        }
+       else{
+        s="Please check your Email id and password";
+        
+       }
+    }
+    alert(s);
+}
+
+</script>
+
+</head>
+<body>
+    
+
+
+<form>
+    <div class="row">
+    <div class="column">
+    <fieldset>
+        <h3>Employee Login</h3>
+<table>
+<tr>
+<td>Emp Id:</td>
+<td><input type="text" onchange="changInpts()" placeholder="Em****"  Id="empId"/><br>
+<label id="empid"  style="color:red;visibility:hidden">Invalid</label></td></tr>
+<tr>
+<td>Password:</td>
+<td><input type="text" onchange="passInputs()" Id="password"/><br>
+<label id="crtpass"  style="color:red;visibility:hidden">Invalid</label></td></tr>
+<tr><td><button style="background-color:darkblue;width:60px; height:28px"><a href="welcome.html" style="text-decoration:none;color:white ">Back</a></button></td>
+<td><button onclick="event.preventDefault(); checking();" style="background-color:darkblue;width:100px; height:30px; color:white">login</button></td></tr>
+<tr>
+<td></td>
+<td style="text-align:right"><a href="forgottenpass.html" target="_self" >forgotten Password</a></td>
+</tr>
+</table>
+</fieldset>
+
+</div>
+<div class="column">
+<fieldset>
+    <h3>User Login</h3>
+<table>
+<tr>
+<td>Email:</td>
+<td><input type="text"   Id="email"/><br>
+<label id="empid"  style="color:red;visibility:hidden">Invalid</label></td></tr>
+<tr>
+<td>Password:</td>
+<td><input type="text"  Id="pass"/><br>
+<label id="crtpass"  style="color:red;visibility:hidden">Invalid</label></td></tr>
+<tr><td><button style="background-color:darkblue;;width:60px; height:28px"><a href="welcome.html" style="text-decoration:none;color:white ">Back</a></button></td>
+<td><button onclick="event.preventDefault(); userData();" style="background-color:darkblue;;width:100px; height:30px; color:white">login</button></td></tr>
+<tr>
+<td></td>
+<td style="text-align:right"><a href="userForgottenpass.html" target="_self" >forgotten Password</a></td>
+</tr>
+</table>
+</fieldset>
+</div>
+    </div>
+</form>
+
+
+
+
+</body>
+</html>

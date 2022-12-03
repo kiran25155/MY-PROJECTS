@@ -1,0 +1,147 @@
+package com.Kiran.model;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+
+@Table(name="productData")
+public class ProductData {
+	@Id
+	@Column
+	private String country;
+	private String itemType;
+	private String sales;
+	private String orderPriority;
+	private Integer orderId;
+	private Integer unitSold;
+	private Double unitPrice;
+	private Double unitCost;
+	private Double totalRevenue;
+	private Double totalCost;
+	private Double totalProfit;
+
+	public ProductData() {
+		super();
+	}
+
+	public ProductData(String country, String itemType, String sales, String orderPriority, Integer orderId,
+			Integer unitSold, Double unitPrice, Double unitCost) {
+		super();
+		this.country = country;
+		this.itemType = itemType;
+		this.sales = sales;
+		this.orderPriority = orderPriority;
+		this.orderId = orderId;
+		this.unitSold = unitSold;
+		this.unitPrice = unitPrice;
+		this.unitCost = unitCost;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getItemType() {
+		return itemType;
+	}
+
+	public void setItemType(String itemType) {
+		this.itemType = itemType;
+	}
+
+	public String getSales() {
+		return sales;
+	}
+
+	public void setSales(String sales) {
+		this.sales = sales;
+	}
+
+	public String getOrderPriority() {
+		return orderPriority;
+	}
+
+	public void setOrderPriority(String orderPriority) {
+		this.orderPriority = orderPriority;
+	}
+
+	public Integer getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(Integer orderId) {
+		this.orderId = orderId;
+	}
+
+	public Integer getUnitSold() {
+		return unitSold;
+	}
+
+	public void setUnitSold(Integer unitSold) {
+		this.unitSold = unitSold;
+	}
+
+	public Double getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(Double unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+
+	public Double getUnitCost() {
+		return unitCost;
+	}
+
+	public void setUnitCost(Double unitCost) {
+		this.unitCost = unitCost;
+	}
+
+	public Double getTotalRevenue() {
+		totalRevenue=unitSold*unitPrice;
+		double rdOff=Math.round(totalRevenue*100.0)/100.0;
+		return rdOff;
+	}
+
+	public void setTotalRevenue(Double totalRevenue) {
+		this.totalRevenue = totalRevenue;
+	}
+
+	public Double getTotalCost() {
+		 totalCost=unitSold*unitCost;
+		 double rdOff=Math.round(totalCost*100.0)/100.0;
+		return rdOff;
+	}
+
+	public void setTotalCost(Double totalCost) {
+		this.totalCost = totalCost;
+	}
+
+	public Double getTotalProfit() {
+		totalRevenue=unitSold*unitPrice;
+		totalCost=unitSold*unitCost;
+		totalProfit=unitSold*unitPrice-unitSold*unitCost;
+		double rdOff=Math.round((totalProfit)*100.0)/100.0;
+		return rdOff;
+	}
+
+	public void setTotalProfit(Double totalProfit) {
+		this.totalProfit = totalProfit;
+	}
+
+	
+
+
+	
+
+
+}

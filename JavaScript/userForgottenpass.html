@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <style>
+            body{
+background-image:url('company1.jpg');
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-size:cover;
+text-align: center;
+padding-top:100px;
+
+}
+
+fieldset{
+    padding-top: 30px;
+    background-color:ghostwhite;
+    margin-left: 600px;
+    margin-right:800px;
+    border-color: red;
+   
+}
+
+table{
+    
+    margin-left: auto;
+    margin-right: auto;
+    background-color:ghostwhite;
+}
+        </style>
+     
+     
+
+        <body>
+            <a href="loginForm.html"><button  style="margin-left:1100px; width:100px; height:30px; background-color:#cf0707;color:white">Back</button></a>
+                
+            <fieldset>
+                <h3>Update Password</h3>
+            <table>
+                <tr>
+                    <td>Email id: </td>
+                     <td><input type="text" Id="e"></td>
+                    
+                </tr>
+                     <tr>
+                        <td>Create Password:</td>
+                        <td><input type="text" Id="pass"></td>
+                    </tr>
+                    <tr>
+                        <td>Confirm Password</td>
+                        <td><input type="text" Id="confPass"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button onclick="updateRec()" style="background-color:blue;width:100px; height:40px; color:white">update password</button></td>
+                    </tr>
+
+                     
+                
+            </table>
+            </fieldset>
+
+            <script>
+               
+                
+                
+                function updateRec(){
+                    let cPass=document.getElementById("pass").value;
+                let confpass=document.getElementById("confPass").value;
+                let user;
+                let index;
+                    let e=document.getElementById("e").value;
+                    let users=JSON.parse(localStorage.getItem("users"));
+                    for(let i=0;i<users.length;i++){
+                        if(users[i].email==e){
+                           index=users.indexOf(users[i]);
+                          
+                         
+
+                            user={
+                                "Name":users[index].Name,
+                    "MobileNum":users[index].MobileNum,
+                    "email":users[index].email,
+                    "dob":users[index].DOB,
+                    "gender":users[index].gender,
+                    "Designation":users[index].Designation,
+                    "country":users[index].Country,
+                    "password":cPass,
+                    "confpassword":confpass,
+                    "add":users[index].add
+                    
+                            }
+                            alert("Sucessfully Updated your password");
+                            window.location.href="loginForm.html";
+                            break;
+                        }
+                        else{
+                            alert("Please check your Email Id");
+                            break;
+                        }
+                    }
+                           
+                            
+                        
+                    
+                     users.splice(index,1,user);
+                     localStorage.users=JSON.stringify(users);
+        
+        
+                    }
+                
+               </script>
+            
+        </body>
+    </head>
+</html>

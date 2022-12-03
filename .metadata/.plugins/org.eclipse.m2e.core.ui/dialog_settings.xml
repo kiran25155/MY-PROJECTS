@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="D:\My Projects\Demo"/>
+			<item value="D:\OneDrive\Desktop\Class Notes\SpringBootProjectAssignmet"/>
+			<item value="D:\Spring Boot\SpringBootProjectAssignmet"/>
+			<item value="D:\Spring Boot\Assignment-1"/>
+			<item value="D:\My Projects\React js\SpringBootProjectAssignmet"/>
+			<item value="D:\My Projects\Stencil js\Demo"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>
